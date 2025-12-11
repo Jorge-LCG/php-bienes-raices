@@ -1,0 +1,27 @@
+{
+  "name": "13-bienesraices",
+  "version": "1.0.0",
+  "description": "Sistema Web de bienes y raices",
+  "keywords": [
+    "SASS",
+    "GULP",
+    "NPM",
+    "PHP",
+    "MYSQL"
+  ],
+  "homepage": "https://github.com/Jorge-LCG/php-bienes-raices#readme",
+  "bugs": {
+    "url": "https://github.com/Jorge-LCG/php-bienes-raices/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Jorge-LCG/php-bienes-raices.git"
+  },
+  "license": "ISC",
+  "author": "Jorge Luis",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  }
+}
