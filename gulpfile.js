@@ -2,6 +2,7 @@ import {src, dest, watch, series} from "gulp";
 import * as dartSass from "sass";
 import gulpSass from "gulp-sass";
 import terser from "gulp-terser";
+import concat from "gulp-concat";
 import sharp from "sharp";
 import path from "path";
 import fs from "fs";
@@ -10,7 +11,8 @@ import {glob} from "glob";
 const sass = gulpSass(dartSass);
 
 export function js(done) {
-    src("src/js/app.js")
+    src("src/js/**/*.js")
+        .pipe(concat("app.min.js"))
         .pipe(terser())
         .pipe(dest("build/js"));
     done();
