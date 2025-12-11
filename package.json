@@ -19,9 +19,17 @@
   },
   "license": "ISC",
   "author": "Jorge Luis",
-  "type": "commonjs",
+  "type": "module",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "gulp"
+  },
+  "devDependencies": {
+    "glob": "^13.0.0",
+    "gulp": "^5.0.1",
+    "gulp-sass": "^6.0.1",
+    "gulp-terser": "^2.1.0",
+    "sass": "^1.96.0",
+    "sharp": "^0.34.5"
   }
 }
