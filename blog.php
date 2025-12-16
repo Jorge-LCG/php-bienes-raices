@@ -1,36 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bienes y Raices</title>
-    <link rel="stylesheet" href="build/css/app.css">
-</head>
-<body>
-    <header class="header">
-        <div class="contenedor contenido-h  eader">
-            <div class="barra">
-                <a href="/">
-                    <img src="build/img/svg/logo.svg" alt="imagen de logo">
-                </a>
-
-                <div class="mobile-menu">
-                    <img src="build/img/svg/barras.svg" alt="menu hamburguesa">
-                </div>
-
-                <div class="derecha">
-                    <img class="dark-mode-boton" src="build/img/svg/dark-mode.svg" alt="darkmode">
-                    
-                    <nav class="navegacion">
-                        <a href="nosotros.html">Nosotros</a>
-                        <a href="anuncios.html">Anuncios</a>
-                        <a href="blog.html">Blog</a>
-                        <a href="contacto.html">Contacto</a>
-                    </nav>
-                </div>
-            </div>
-        </div>
-    </header>
+<?php include "includes/templates/header.php"; ?>
 
     <main class="contenedor seccion contenido-centrado">
         <h1>Nuestro Blog</h1>
@@ -46,7 +14,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Terraza en el techo de tu casa</h4>
                 </a>
                 
@@ -66,7 +34,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Guia para decoración de tu hogar</h4>
                 </a>
 
@@ -86,7 +54,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Terraza en el techo de tu casa</h4>
                 </a>
                 
@@ -106,7 +74,7 @@
             </div>
 
             <div class="texto-entrada">
-                <a href="entrada.html">
+                <a href="entrada.php">
                     <h4>Guia para decoración de tu hogar</h4>
                 </a>
 
@@ -119,10 +87,10 @@
     <footer class="footer">
         <div class="contenedor contenedor-footer">
             <nav class="navegacion">
-                <a href="nosotros.html">Nosotros</a>
-                <a href="anuncios.html">Anuncios</a>
-                <a href="blog.html">Blog</a>
-                <a href="contacto.html">Contacto</a>
+                <a href="nosotros.php">Nosotros</a>
+                <a href="anuncios.php">Anuncios</a>
+                <a href="blog.php">Blog</a>
+                <a href="contacto.php">Contacto</a>
             </nav>
 
             <p class="copyright">Todos los derechos reservados 2025 &copy;</p>
