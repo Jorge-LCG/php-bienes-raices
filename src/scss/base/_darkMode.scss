@@ -1,0 +1,45 @@
+@use "variables" as v;
+@use "sass:color";
+
+.dark-mode {
+    background-color: color.adjust(v.$colorGrisOscuro, $lightness: -10%);
+
+    p {
+        color: v.$colorBlanco;
+    }
+
+    a, h1, h2, h3, h4 {
+        color: v.$colorGris;
+    }
+
+    .anuncio {
+        background-color: v.$colorGrisOscuro;
+        border: 1px solid v.$colorGrisOscuro;
+    }
+
+    .resumen-propiedad, .anuncio {
+        .precio {
+            color: v.$colorVerde;
+        }
+
+        .icono {
+            filter: invert(100%);
+        }
+    }
+
+    blockquote {
+        color: v.$colorBlanco;
+    }
+
+    .formulario {
+        p, label, legend {
+            color: v.$colorGris;
+        }
+
+        input:not([type="submit"]), textarea, select {
+            background-color: v.$colorGrisOscuro;
+            color: v.$colorBlanco;
+            border: 1px solid v.$colorGris;
+        }
+    }
+}

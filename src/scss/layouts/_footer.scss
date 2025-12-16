@@ -5,6 +5,12 @@
     padding: 2.5rem 0;
     background-color: v.$colorGrisOscuro;
 
+    .navegacion {
+        visibility: visible;
+        opacity: 1;
+        height: auto;
+    }
+
     .copyright {
         color: v.$colorBlanco;
         text-align: center;

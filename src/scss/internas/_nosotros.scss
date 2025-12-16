@@ -12,5 +12,10 @@
         font-weight: 700;
         margin-left: 0;
         font-size: 1.8rem;
+        margin-top: 3rem;
+
+        @include m.tablet {
+            margin-top: 0;
+        }
     }
 }
