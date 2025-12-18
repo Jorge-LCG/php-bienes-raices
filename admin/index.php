@@ -15,6 +15,8 @@
 
         <?php if (intval($mensaje) === 1) : ?>
             <p class="alerta exito" id="alerta">Anuncio Creado Correctamente.</p>
+        <?php elseif (intval($mensaje) === 2) : ?>
+            <p class="alerta exito" id="alerta">Anuncio Actualizado Correctamente.</p>
         <?php endif; ?>
 
         <a href="admin/propiedades/crear.php" class="boton-verde">Nueva Propiedad</a>
@@ -41,7 +43,7 @@
                         <td><?php echo $propiedad["precio"]; ?></td>
                         <td class="acciones">
                             <a href="" class="boton-rojo-block">Borrar</a>
-                            <a href="" class="boton-amarillo-block">Actualizar</a>
+                            <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad["id"];?>" class="boton-amarillo-block">Actualizar</a>
                         </td>
                     </tr>
                 <?php endwhile; ?>

@@ -143,7 +143,7 @@
                 </select>
             </fieldset>
 
-            <input type="submit" value="Enviar" class="boton-verde">
+            <input type="submit" value="Crear Propiedad" class="boton-verde">
         </form>
     </main>
 
