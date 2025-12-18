@@ -6,6 +6,25 @@
     $resultado = mysqli_query($db, $query);
 
     $mensaje = $_GET["resultado"] ?? null;
+
+    if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $id = $_POST["id"];
+        $id = filter_var($id, FILTER_VALIDATE_INT);
+
+        if ($id) {
+            $query = "SELECT imagen FROM propiedades WHERE id=$id;";
+            $resultado = mysqli_query($db, $query);
+            $propiedad = mysqli_fetch_assoc($resultado);
+
+            unlink( "../imagenes/" . $propiedad["imagen"] . ".jpg");
+
+            $query = "DELETE FROM propiedades WHERE id=$id;";
+            $resultado = mysqli_query($db, $query);
+
+            header("Location: /admin?resultado=3");
+        }
+    }
+
     require "../includes/funciones.php";
     incluirTemplate("header");
 ?>
@@ -17,6 +36,8 @@
             <p class="alerta exito" id="alerta">Anuncio Creado Correctamente.</p>
         <?php elseif (intval($mensaje) === 2) : ?>
             <p class="alerta exito" id="alerta">Anuncio Actualizado Correctamente.</p>
+        <?php elseif (intval($mensaje) === 3) : ?>
+            <p class="alerta exito" id="alerta">Anuncio Eliminado Correctamente.</p>
         <?php endif; ?>
 
         <a href="admin/propiedades/crear.php" class="boton-verde">Nueva Propiedad</a>
@@ -42,7 +63,10 @@
                         </td>
                         <td><?php echo $propiedad["precio"]; ?></td>
                         <td class="acciones">
-                            <a href="" class="boton-rojo-block">Borrar</a>
+                            <form method="POST">
+                                <input type="hidden" id="id" name="id" value="<?php echo $propiedad["id"]; ?>">
+                                <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
+                            </form>
                             <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad["id"];?>" class="boton-amarillo-block">Actualizar</a>
                         </td>
                     </tr>

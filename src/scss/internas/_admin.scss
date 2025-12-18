@@ -47,15 +47,16 @@ table.propiedades {
     }
 
     .acciones {
-        padding: 1rem 0;
+        padding: 2rem 0;
 
-        a {
+        a, input[type="submit"] {
             margin: 0;
-            width: 100%;
+            padding: 1rem;
         }
-        
-        a:first-child {
-            margin-bottom: 1rem;
+
+        input[type="submit"] {
+            margin-bottom: 1.5rem;
+            padding: 1.5rem 0;
         }
     }
 }
