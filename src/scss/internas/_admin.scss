@@ -17,3 +17,45 @@
         background-color: v.$colorVerde;
     }
 }
+
+table.propiedades {
+    margin-top: 4rem;
+    width: 100%;
+    border-spacing: 0;
+    border-collapse: collapse;
+
+    thead {
+        background-color: v.$colorVerde;
+
+        th {
+            color: v.$colorBlanco;
+            padding: 2rem;
+        }
+    }
+
+    tbody {
+        tr {
+            text-align: center;
+            border-bottom: 1px solid v.$colorGris;
+        }
+    }
+
+    .imagen-tabla {
+        display: block;
+        width: 15rem;
+        margin: 0 auto;
+    }
+
+    .acciones {
+        padding: 1rem 0;
+
+        a {
+            margin: 0;
+            width: 100%;
+        }
+        
+        a:first-child {
+            margin-bottom: 1rem;
+        }
+    }
+}

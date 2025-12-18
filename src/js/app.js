@@ -1,6 +1,7 @@
 document.addEventListener("DOMContentLoaded", function () {
     eventListerners();
     darkMode();
+    alertas();
 });
 
 function darkMode() {
@@ -28,7 +29,6 @@ function darkMode() {
     });
 }
 
-
 function eventListerners() {
     const mobileBoton = document.querySelector(".mobile-menu");
     mobileBoton.addEventListener("click", navegacionResponsiva);
@@ -42,4 +42,12 @@ function navegacionResponsiva() {
     } else {
         navegacion.classList.add("mostrar");
     }
+}
+
+function alertas() {
+    const alerta = document.getElementById("alerta");
+
+    setTimeout(() => {
+        alerta.style.display = "none";
+    }, 3000);
 }

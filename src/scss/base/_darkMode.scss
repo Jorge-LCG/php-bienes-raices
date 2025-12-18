@@ -42,4 +42,12 @@
             border: 1px solid v.$colorGris;
         }
     }
+
+    table.propiedades {
+        tbody {
+            tr {
+                color: v.$colorBlanco;
+            }
+        }
+    }
 }
