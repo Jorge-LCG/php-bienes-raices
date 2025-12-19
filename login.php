@@ -1,9 +1,9 @@
 <?php
     require "includes/config/database.php";
     $db = conectarBD();
+    $errores = [];
 
     if ($_SERVER["REQUEST_METHOD"] === "POST"){
-        $errores = [];
         $email = mysqli_real_escape_string($db, filter_var($_POST["email"], FILTER_VALIDATE_EMAIL));
         $password = mysqli_real_escape_string($db, $_POST["password"]);
 
