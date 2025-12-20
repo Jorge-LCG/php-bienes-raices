@@ -2,15 +2,14 @@
     require "../../includes/app.php";
 
     use App\Propiedad;
-
     estaAutenticado();
-
     $db = conectarBD();
 
     $query = "SELECT * FROM vendedores;";
     $resultado = mysqli_query($db, $query);
 
-    $errores = [];
+    $errores = Propiedad::getErrores();
+
     $titulo = "";
     $precio = "";
     $descripcion = "";
@@ -23,55 +22,13 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $propiedad = new Propiedad($_POST);
-        $propiedad->guardar();
-
-        $titulo = mysqli_real_escape_string($db, $_POST["titulo"]);
-        $precio = mysqli_real_escape_string($db, $_POST["precio"]);
-        $descripcion = mysqli_real_escape_string($db, $_POST["descripcion"]);
-        $habitacion = mysqli_real_escape_string($db, $_POST["habitacion"]);
-        $wc = mysqli_real_escape_string($db, $_POST["wc"]);
-        $estacionamiento = mysqli_real_escape_string($db, $_POST["estacionamiento"]);
-        $vendedorId = mysqli_real_escape_string($db, $_POST["vendedorId"]);
-        $imagen = $_FILES["imagen"];
-        $pesoImagen = 1000 * 1000;
-
-        if (!$titulo) {
-            $errores[] = "Debes añadir un titulo";
-        }
-
-        if (!$precio) {
-            $errores[] = "Debes añadir un precio";
-        }
-
-        if (strlen($descripcion) <= 50) {
-            $errores[] = "Debes añadir una descripcion y debe tener al menos 50 caracteres";
-        }
-
-        if (!$habitacion) {
-            $errores[] = "Debes añadir cantidad de habitaciones";
-        }
+        $errores = $propiedad->validar();
         
-        if (!$wc) {
-            $errores[] = "Debes añadir cantidad de baños";
-        }
-        
-        if (!$estacionamiento) {
-            $errores[] = "Debes añadir cantidad de estacionamiento";
-        }
-
-        if (!$vendedorId) {
-            $errores[] = "Debes añadir un vendedor";
-        }
-
-        if (!$imagen["name"] || $imagen["error"]) {
-            $errores[] = "La imagen es obligatoria";
-        }
-
-        if ($imagen["size"] > $pesoImagen) {
-            $errores[] = "La imagen es muy pesada";
-        }
-
         if (empty($errores)) {
+            $propiedad->guardar();
+            
+            $imagen = $_FILES["imagen"];
+
             $carpetaImagenes = "../../imagenes";
 
             if (!is_dir($carpetaImagenes)) {
