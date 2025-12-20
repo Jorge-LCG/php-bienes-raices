@@ -1,12 +1,10 @@
 <?php
-    require "../../includes/funciones.php";
-    $auth = estaAutenticado();
+    require "../../includes/app.php";
 
-    if (!$auth) {
-        header("Location: /");
-    }
+    use App\Propiedad;
 
-    require "../../includes/config/database.php";
+    estaAutenticado();
+
     $db = conectarBD();
 
     $query = "SELECT * FROM vendedores;";
@@ -24,13 +22,16 @@
     $imagen = "";
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
+        $propiedad = new Propiedad($_POST);
+        $propiedad->guardar();
+
         $titulo = mysqli_real_escape_string($db, $_POST["titulo"]);
         $precio = mysqli_real_escape_string($db, $_POST["precio"]);
         $descripcion = mysqli_real_escape_string($db, $_POST["descripcion"]);
         $habitacion = mysqli_real_escape_string($db, $_POST["habitacion"]);
         $wc = mysqli_real_escape_string($db, $_POST["wc"]);
         $estacionamiento = mysqli_real_escape_string($db, $_POST["estacionamiento"]);
-        $vendedorId = mysqli_real_escape_string($db, $_POST["vendedor"]);
+        $vendedorId = mysqli_real_escape_string($db, $_POST["vendedorId"]);
         $imagen = $_FILES["imagen"];
         $pesoImagen = 1000 * 1000;
 
@@ -81,7 +82,7 @@
 
             move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . "/" . $nombreImagen . ".jpg");
 
-            $query = "INSERT INTO propiedades (titulo, precio, imagen, descripcion, habitaciones, wc, estacionamiento, creado, vendedorId) VALUES ('$titulo', '$precio', '$nombreImagen', '$descripcion', '$habitacion', '$wc', '$estacionamiento', '$creado', '$vendedorId');";
+           
     
             $resultado = mysqli_query($db, $query);
     
@@ -139,7 +140,7 @@
             <fieldset>
                 <legend>Información Vendedor</legend>
 
-                <select name="vendedor" id="vendedor">
+                <select name="vendedorId" id="vendedor">
                     <option>--Seleccionar--</option>
                     <?php while($vendedor = mysqli_fetch_assoc($resultado)) : ?>
                         <option <?php echo $vendedorId === $vendedor["id"] ? "selected" : ""; ?> value="<?php echo $vendedor['id']; ?>">
