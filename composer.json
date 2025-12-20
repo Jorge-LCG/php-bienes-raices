@@ -1,0 +1,17 @@
+{
+    "name": "home/15-bienesraices-poo",
+    "description": "Creacion de proyecto con POO",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "./classes"
+        }
+    },
+    "authors": [
+        {
+            "name": "Jorge-LCG",
+            "email": "jorgeluiscg2003@gmail.com"
+        }
+    ],
+    "require": {}
+}
