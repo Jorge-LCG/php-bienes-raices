@@ -58,7 +58,7 @@
                         <td><?php echo $propiedad->id; ?></td>
                         <td><?php echo $propiedad->titulo; ?></td>
                         <td>
-                            <img src="../imagenes/<?php echo $propiedad->imagen; ?>.jpg" alt="<?php echo $propiedad->titulo ?>" class="imagen-tabla">
+                            <img src="../imagenes/<?php echo $propiedad->imagen; ?>.jpg" alt="<?php echo $propiedad->titulo; ?>" class="imagen-tabla">
                         </td>
                         <td><?php echo $propiedad->precio; ?></td>
                         <td class="acciones">

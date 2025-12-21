@@ -23,3 +23,8 @@ function debuguear($variable) {
 
     exit;
 }
+
+function sanitizar($html): string {
+    $sanitizarHTML = htmlspecialchars($html);
+    return $sanitizarHTML;
+}
