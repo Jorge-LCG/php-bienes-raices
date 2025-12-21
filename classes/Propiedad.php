@@ -117,9 +117,15 @@ class Propiedad {
     }
 
     public static function all() {
-        $query = "SELECT * FROM propiedades";
+        $query = "SELECT * FROM propiedades;";
         $resultado = self::consultarQuery($query);
         return $resultado;
+    }
+
+    public static function find($id) {
+        $query = "SELECT * FROM propiedades WHERE id=$id;";
+        $resultado = self::consultarQuery($query);
+        return array_shift($resultado);
     }
 
     public static function consultarQuery($query) {
