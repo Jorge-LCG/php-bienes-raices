@@ -3,6 +3,8 @@
     estaAutenticado();
     
     use App\Propiedad;
+    use Intervention\Image\Drivers\Gd\Driver;
+    use Intervention\Image\ImageManager as Image;
 
     $id = $_GET["id"];
     $id = filter_var($id, FILTER_VALIDATE_INT);
@@ -27,22 +29,19 @@
 
         $errores = $propiedad->validar();
 
+        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
+
+        if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
+            $manager = new Image(Driver::class);
+            $imagen = $manager->read($_FILES["propiedad"]["tmp_name"]["imagen"])->cover(800, 600);
+            $propiedad->setImagen($nombreImagen);
+        }
+
+        debuguear($propiedad);
+
         if (empty($errores)) {
-            $carpetaImagenes = "../../imagenes";
 
-            if (!is_dir($carpetaImagenes)) {
-                mkdir($carpetaImagenes);
-            }
-
-            if ($imagen["name"]) {
-                unlink($carpetaImagenes . "/" . $propiedad["imagen"] . ".jpg");
-                $nombreImagen = md5(uniqid(rand(), true));
-                move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . "/" . $nombreImagen . ".jpg");
-            } else {
-                $nombreImagen = $propiedad["imagen"];
-            }
-
-
+            
             $query = "UPDATE propiedades SET titulo='$titulo', precio=$precio, imagen='$nombreImagen', descripcion='$descripcion', habitaciones=$habitacion, wc=$wc, estacionamiento=$estacionamiento, vendedorId=$vendedorId WHERE id=$id;";
     
             $resultado = mysqli_query($db, $query);
