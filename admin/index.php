@@ -1,12 +1,8 @@
 <?php
-    require "../includes/funciones.php";
-    $auth = estaAutenticado();
+    require "../includes/app.php";
+    
+    estaAutenticado();
 
-    if (!$auth) {
-        header("Location: /");
-    }
-
-    require "../includes/config/database.php";
     $db = conectarBD();
 
     $query = "SELECT id, titulo, imagen, precio FROM propiedades";
