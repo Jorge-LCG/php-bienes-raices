@@ -1,12 +1,9 @@
 <?php
     require "../includes/app.php";
-    
     estaAutenticado();
-
-    $db = conectarBD();
-
-    $query = "SELECT id, titulo, imagen, precio FROM propiedades";
-    $resultado = mysqli_query($db, $query);
+    
+    use App\Propiedad;
+    $propiedades = Propiedad::all();
 
     $mensaje = $_GET["resultado"] ?? null;
 
