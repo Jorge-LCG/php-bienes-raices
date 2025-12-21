@@ -5,7 +5,7 @@
     <input 
         type="text" 
         id="titulo" 
-        name="titulo" 
+        name="propiedad[titulo]" 
         placeholder="Título de propiedad" 
         value="<?php echo sanitizar($propiedad->titulo); ?>"
     >
@@ -14,7 +14,7 @@
     <input 
         type="number" 
         id="precio" 
-        name="precio" 
+        name="propiedad[precio]" 
         placeholder="Precio de la propiedad" 
         value="<?php echo sanitizar($propiedad->precio); ?>"
     >
@@ -23,7 +23,7 @@
     <input 
         type="file" 
         id="imagen" 
-        name="imagen" 
+        name="propiedad[imagen]" 
         accept="image/jpeg, image/png"
     >
     <?php if ($propiedad->imagen): ?>
@@ -36,7 +36,7 @@
 
     <label for="descripcion">Descripción</label>
     <textarea 
-        name="descripcion" 
+        name="propiedad[descripcion]" 
         id="descripcion"
     >
         <?php echo sanitizar($propiedad->descripcion); ?>
@@ -50,7 +50,7 @@
     <input 
         type="number" 
         id="habitaciones" 
-        name="habitaciones" 
+        name="propiedad[habitaciones]" 
         placeholder="Ej: 3" 
         min="1" max="9" 
         value="<?php echo sanitizar($propiedad->habitaciones); ?>"
@@ -60,7 +60,7 @@
     <input 
         type="number" 
         id="wc" 
-        name="wc" 
+        name="propiedad[wc]" 
         placeholder="Ej: 3" 
         min="1" max="9" 
         value="<?php echo sanitizar($propiedad->wc); ?>"
@@ -70,7 +70,7 @@
     <input 
         type="number" 
         id="estacionamiento" 
-        name="estacionamiento" 
+        name="propiedad[estacionamiento]" 
         placeholder="Ej: 3"
         min="1" max="9" 
         value="<?php echo sanitizar($propiedad->estacionamiento); ?>"
