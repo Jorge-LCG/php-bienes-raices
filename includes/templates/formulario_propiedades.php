@@ -28,7 +28,7 @@
     >
     <?php if ($propiedad->imagen): ?>
         <img 
-            src="/imagenes/<?php echo $propiedad->imagen;?>.jpg" 
+            src="/imagenes/<?php echo $propiedad->imagen;?>" 
             alt="<?php echo $propiedad->imagen; ?>"
             class="imagen-small"
         >
@@ -38,9 +38,7 @@
     <textarea 
         name="propiedad[descripcion]" 
         id="descripcion"
-    >
-        <?php echo sanitizar($propiedad->descripcion); ?>
-    </textarea>
+    ><?php echo sanitizar($propiedad->descripcion); ?></textarea>
 </fieldset>
 
 <fieldset>

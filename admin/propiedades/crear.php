@@ -28,7 +28,7 @@
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $propiedad = new Propiedad($_POST["propiedad"]);
         
-        $nombreImagen = md5(uniqid(rand(), true));
+        $nombreImagen = md5(uniqid(rand(), true)) . ".jpg";
 
         if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
             $manager = new Image(Driver::class);
@@ -43,13 +43,9 @@
                 mkdir(CARPETA_IMAGENES);
             }
 
-            $imagen->save(CARPETA_IMAGENES . $nombreImagen . ".jpg");
+            $imagen->save(CARPETA_IMAGENES . $nombreImagen);
 
             $resultado = $propiedad->guardar();
-    
-            if ($resultado) {
-                header("Location: /admin?resultado=1");
-            }
         }
     }
     

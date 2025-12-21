@@ -37,18 +37,12 @@
             $propiedad->setImagen($nombreImagen);
         }
 
-        debuguear($propiedad);
-
         if (empty($errores)) {
-
-            
-            $query = "UPDATE propiedades SET titulo='$titulo', precio=$precio, imagen='$nombreImagen', descripcion='$descripcion', habitaciones=$habitacion, wc=$wc, estacionamiento=$estacionamiento, vendedorId=$vendedorId WHERE id=$id;";
-    
-            $resultado = mysqli_query($db, $query);
-    
-            if ($resultado) {
-                header("Location: /admin?resultado=2");
+            if (isset($imagen)) {
+                $imagen->save(CARPETA_IMAGENES . $nombreImagen);
             }
+
+            $resultado = $propiedad->guardar();
         }
     }
 
