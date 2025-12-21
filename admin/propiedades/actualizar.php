@@ -21,46 +21,11 @@
     $errores = Propiedad::getErrores();
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-        
         $args = $_POST["propiedad"];
 
         $propiedad->sincronizar($args);
 
-        debuguear($propiedad);
-        
-        $imagen = $_FILES["imagen"];
-
-        if (!$titulo) {
-            $errores[] = "Debes añadir un titulo";
-        }
-
-        if (!$precio) {
-            $errores[] = "Debes añadir un precio";
-        }
-
-        if (strlen($descripcion) <= 50) {
-            $errores[] = "Debes añadir una descripcion y debe tener al menos 50 caracteres";
-        }
-
-        if (!$habitacion) {
-            $errores[] = "Debes añadir cantidad de habitaciones";
-        }
-        
-        if (!$wc) {
-            $errores[] = "Debes añadir cantidad de baños";
-        }
-        
-        if (!$estacionamiento) {
-            $errores[] = "Debes añadir cantidad de estacionamiento";
-        }
-
-        if (!$vendedorId) {
-            $errores[] = "Debes añadir un vendedor";
-        }
-
-        if ($imagen["size"] > $pesoImagen) {
-            $errores[] = "La imagen es muy pesada";
-        }
+        $errores = $propiedad->validar();
 
         if (empty($errores)) {
             $carpetaImagenes = "../../imagenes";
