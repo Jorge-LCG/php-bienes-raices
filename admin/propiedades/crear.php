@@ -2,6 +2,9 @@
     require "../../includes/app.php";
 
     use App\Propiedad;
+    use Intervention\Image\Drivers\Gd\Driver;
+    use Intervention\Image\ImageManager as Image;
+
     estaAutenticado();
     $db = conectarBD();
 
@@ -13,7 +16,7 @@
     $titulo = "";
     $precio = "";
     $descripcion = "";
-    $habitacion = "";
+    $habitaciones = "";
     $wc = "";
     $estacionamiento = "";
     $vendedorId = "";
@@ -22,26 +25,25 @@
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $propiedad = new Propiedad($_POST);
+        
+        $nombreImagen = md5(uniqid(rand(), true));
+
+        if ($_FILES["imagen"]["tmp_name"]) {
+            $manager = new Image(Driver::class);
+            $imagen = $manager->read($_FILES["imagen"]["tmp_name"])->cover(800, 600);
+            $propiedad->setImagen($nombreImagen);
+        }
+        
         $errores = $propiedad->validar();
         
         if (empty($errores)) {
-            $propiedad->guardar();
-            
-            $imagen = $_FILES["imagen"];
-
-            $carpetaImagenes = "../../imagenes";
-
-            if (!is_dir($carpetaImagenes)) {
-                mkdir($carpetaImagenes);
+            if (!is_dir(CARPETA_IMAGENES)) {
+                mkdir(CARPETA_IMAGENES);
             }
 
-            $nombreImagen = md5(uniqid(rand(), true));
+            $imagen->save(CARPETA_IMAGENES . $nombreImagen . ".jpg");
 
-            move_uploaded_file($imagen["tmp_name"], $carpetaImagenes . "/" . $nombreImagen . ".jpg");
-
-           
-    
-            $resultado = mysqli_query($db, $query);
+            $resultado = $propiedad->guardar();
     
             if ($resultado) {
                 header("Location: /admin?resultado=1");
@@ -84,8 +86,8 @@
             <fieldset>
                 <legend>Información Propiedad</legend>
 
-                <label for="habitacion">Habitaciones</label>
-                <input type="number" id="habitacion" name="habitacion" placeholder="Ej: 3" min="1" max="9" value="<?php echo $habitacion; ?>">
+                <label for="habitaciones">Habitaciones</label>
+                <input type="number" id="habitaciones" name="habitaciones" placeholder="Ej: 3" min="1" max="9" value="<?php echo $habitaciones; ?>">
                 
                 <label for="wc">Baños</label>
                 <input type="number" id="wc" name="wc" placeholder="Ej: 3" min="1" max="9" value="<?php echo $wc; ?>">
