@@ -28,3 +28,8 @@ function sanitizar($html): string {
     $sanitizarHTML = htmlspecialchars($html);
     return $sanitizarHTML;
 }
+
+function validarContenido($tipo) {
+    $tipos = ["propiedad", "vendedor"];
+    return in_array($tipo, $tipos);
+}

@@ -15,8 +15,15 @@
         $id = filter_var($id, FILTER_VALIDATE_INT);
 
         if ($id) {
-            $propiedad = Propiedad::find($id);
-            $propiedad->eliminar();
+            $tipo = $_POST["tipo"];
+            
+            if ($tipo === "propiedad") {
+                $propiedad = Propiedad::find($id);
+                $propiedad->eliminar();
+            } else if ($tipo === "vendedor") {
+                $propiedad = Vendedor::find($id);
+                $propiedad->eliminar();
+            }
         }
     }
 
@@ -60,6 +67,7 @@
                         <td class="acciones">
                             <form method="POST">
                                 <input type="hidden" id="id" name="id" value="<?php echo $propiedad->id; ?>">
+                                <input type="hidden" id="tipo" name="tipo" value="propiedad">
                                 <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
                             </form>
                             <a href="admin/vendedores/actualizar.php?id=<?php echo $propiedad->id;?>" class="boton-amarillo-block">Actualizar</a>
@@ -91,6 +99,7 @@
                         <td class="acciones">
                             <form method="POST">
                                 <input type="hidden" id="id" name="id" value="<?php echo $vendedor->id; ?>">
+                                <input type="hidden" id="tipo" name="tipo" value="vendedor">
                                 <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
                             </form>
                             <a href="admin/propiedades/actualizar.php?id=<?php echo $vendedor->id;?>" class="boton-amarillo-block">Actualizar</a>
