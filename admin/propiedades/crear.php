@@ -2,6 +2,7 @@
     require "../../includes/app.php";
 
     use App\Propiedad;
+    use App\Vendedor;
     use Intervention\Image\Drivers\Gd\Driver;
     use Intervention\Image\ImageManager as Image;
 
@@ -9,9 +10,7 @@
     $db = conectarBD();
 
     $propiedad = new Propiedad();
-
-    $query = "SELECT * FROM vendedores;";
-    $resultado = mysqli_query($db, $query);
+    $vendedor = Vendedor::all();
 
     $errores = Propiedad::getErrores();
 
