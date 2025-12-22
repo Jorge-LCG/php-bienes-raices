@@ -7,10 +7,9 @@
     use Intervention\Image\ImageManager as Image;
 
     estaAutenticado();
-    $db = conectarBD();
 
     $propiedad = new Propiedad();
-    $vendedor = Vendedor::all();
+    $vendedores = Vendedor::all();
 
     $errores = Propiedad::getErrores();
 
