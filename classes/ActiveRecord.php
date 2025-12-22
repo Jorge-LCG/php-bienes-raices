@@ -88,43 +88,12 @@ class ActiveRecord {
     }
 
     public static function getErrores() {
-        return self::$errores;
+        return static::$errores;
     }
 
     public function validar() {
-        if (!$this->titulo) {
-            self::$errores[] = "Debes añadir un titulo";
-        }
-
-        if (!$this->precio) {
-            self::$errores[] = "Debes añadir un precio";
-        }
-
-        if (strlen($this->descripcion) <= 50) {
-            self::$errores[] = "Debes añadir una descripcion y debe tener al menos 50 caracteres";
-        }
-
-        if (!$this->habitaciones) {
-            self::$errores[] = "Debes añadir cantidad de habitaciones";
-        }
-        
-        if (!$this->wc) {
-            self::$errores[] = "Debes añadir cantidad de baños";
-        }
-        
-        if (!$this->estacionamiento) {
-            self::$errores[] = "Debes añadir cantidad de estacionamiento";
-        }
-
-        if (!$this->vendedorId) {
-            self::$errores[] = "Debes añadir un vendedor";
-        }
-
-        if (!$this->imagen) {
-            self::$errores[] = "La imagen es obligatoria";
-        }
-
-        return self::$errores;
+        static::$errores = [];
+        return static::$errores;
     }
 
     public function setImagen($imagen) {
