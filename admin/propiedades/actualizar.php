@@ -3,6 +3,7 @@
     estaAutenticado();
     
     use App\Propiedad;
+    use App\Vendedor;
     use Intervention\Image\Drivers\Gd\Driver;
     use Intervention\Image\ImageManager as Image;
 
@@ -13,12 +14,8 @@
         header("Location: /admin");
     }
 
-    $db = conectarBD();
-
     $propiedad = Propiedad::find($id);
-
-    $query = "SELECT * FROM vendedores;";
-    $resultado = mysqli_query($db, $query);
+    $vendedores = Vendedor::all();
 
     $errores = Propiedad::getErrores();
 
@@ -38,7 +35,7 @@
         }
 
         if (empty($errores)) {
-            if (isset($imagen)) {
+            if ($_FILES["propiedad"]["tmp_name"]["imagen"]) {
                 $imagen->save(CARPETA_IMAGENES . $nombreImagen);
             }
 
