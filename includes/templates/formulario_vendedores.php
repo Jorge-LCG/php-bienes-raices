@@ -7,7 +7,7 @@
         id="nombre" 
         name="vendedor[nombre]" 
         placeholder="Nombre del vendedor" 
-        value="<?php echo sanitizar($nombre->vendedor); ?>"
+        value="<?php echo sanitizar($vendedor->nombre); ?>"
     >
     
     <label for="apellido">Apellido</label>
@@ -16,7 +16,7 @@
         id="apellido" 
         name="vendedor[apellido]" 
         placeholder="Apellido del vendedor" 
-        value="<?php echo sanitizar($nombre->apellido); ?>"
+        value="<?php echo sanitizar($vendedor->apellido); ?>"
     >
 </fieldset>
 
@@ -29,6 +29,6 @@
         id="telefono" 
         name="vendedor[telefono]" 
         placeholder="Telefono del vendedor" 
-        value="<?php echo sanitizar($nombre->telefono); ?>"
+        value="<?php echo sanitizar($vendedor->telefono); ?>"
     >
 </fieldset>

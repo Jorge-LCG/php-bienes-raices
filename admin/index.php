@@ -34,11 +34,11 @@
         <h1>Administrador de Bienes y Raices</h1>
 
         <?php if (intval($mensaje) === 1) : ?>
-            <p class="alerta exito" id="alerta">Anuncio Creado Correctamente.</p>
+            <p class="alerta exito" id="alerta">Creado Correctamente.</p>
         <?php elseif (intval($mensaje) === 2) : ?>
-            <p class="alerta exito" id="alerta">Anuncio Actualizado Correctamente.</p>
+            <p class="alerta exito" id="alerta">Actualizado Correctamente.</p>
         <?php elseif (intval($mensaje) === 3) : ?>
-            <p class="alerta exito" id="alerta">Anuncio Eliminado Correctamente.</p>
+            <p class="alerta exito" id="alerta">Eliminado Correctamente.</p>
         <?php endif; ?>
 
         <a href="admin/propiedades/crear.php" class="boton-verde">Nueva Propiedad</a>
@@ -71,7 +71,7 @@
                                 <input type="hidden" id="tipo" name="tipo" value="propiedad">
                                 <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
                             </form>
-                            <a href="admin/vendedores/actualizar.php?id=<?php echo $propiedad->id;?>" class="boton-amarillo-block">Actualizar</a>
+                            <a href="admin/propiedades/actualizar.php?id=<?php echo $propiedad->id;?>" class="boton-amarillo-block">Actualizar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>
@@ -103,7 +103,7 @@
                                 <input type="hidden" id="tipo" name="tipo" value="vendedor">
                                 <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
                             </form>
-                            <a href="admin/propiedades/actualizar.php?id=<?php echo $vendedor->id;?>" class="boton-amarillo-block">Actualizar</a>
+                            <a href="admin/vendedores/actualizar.php?id=<?php echo $vendedor->id;?>" class="boton-amarillo-block">Actualizar</a>
                         </td>
                     </tr>
                 <?php endforeach; ?>

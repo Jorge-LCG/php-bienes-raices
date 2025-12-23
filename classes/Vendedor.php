@@ -2,6 +2,8 @@
 
 namespace App;
 
+use Random\Engine\Secure;
+
 class Vendedor extends ActiveRecord {
     protected static $tabla = "vendedores";
     protected static $columasDB = ['id', 'nombre', 'apellido', 'telefono'];
@@ -17,5 +19,25 @@ class Vendedor extends ActiveRecord {
         $this->nombre = $args["nombre"] ?? "";
         $this->apellido = $args["apellido"] ?? "";
         $this->telefono = $args["telefono"] ?? "";
+    }
+
+    public function validar() {
+        if (!$this->nombre) {
+            self::$errores[] = "El nombre es obligatorio";
+        }
+        
+        if (!$this->apellido) {
+            self::$errores[] = "El apellido es obligatorio";
+        }
+        
+        if (!$this->telefono) {
+            self::$errores[] = "El teléfono es obligatorio";
+        }
+
+        if (!preg_match("/[0-9]{9}/", $this->telefono)) {
+            self::$errores[] = "Formato no válido para teléfono";
+        }
+
+        return self::$errores;
     }
 }
