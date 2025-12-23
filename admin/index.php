@@ -8,7 +8,7 @@
     $propiedades = Propiedad::all();
     $vendedores = Vendedor::all();
 
-    $mensaje = $_GET["resultado"] ?? null;
+    $resultado = $_GET["resultado"] ?? null;
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $id = $_POST["id"];
@@ -33,13 +33,11 @@
     <main class="contenedor seccion">
         <h1>Administrador de Bienes y Raices</h1>
 
-        <?php if (intval($mensaje) === 1) : ?>
-            <p class="alerta exito" id="alerta">Creado Correctamente.</p>
-        <?php elseif (intval($mensaje) === 2) : ?>
-            <p class="alerta exito" id="alerta">Actualizado Correctamente.</p>
-        <?php elseif (intval($mensaje) === 3) : ?>
-            <p class="alerta exito" id="alerta">Eliminado Correctamente.</p>
-        <?php endif; ?>
+        <?php $mensaje = mostrarNotificacion(intval($resultado)); ?>
+
+        <?php if ($mensaje) : ?>
+            <p class="alerta exito" id="alerta"><?php echo sanitizar($mensaje); ?></p>
+        <?php endif; ?>            
 
         <a href="admin/propiedades/crear.php" class="boton-verde">Nueva Propiedad</a>
         <a href="admin/vendedores/crear.php" class="boton-amarillo">Nuevo(a) Vendedor</a>
