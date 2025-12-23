@@ -3,12 +3,27 @@
     use App\Vendedor;
     estaAutenticado();
 
-    $vendedor = new Vendedor();
+    $id = $_GET["id"];
+    $id = filter_var($id, FILTER_VALIDATE_INT);
+
+    if (!$id) {
+        header("Location: /admin");
+    }
+
+    $vendedor = Vendedor::find($id);
 
     $errores = Vendedor::getErrores();
 
     if ($_SERVER["REQUEST_METHOD"] === "POST") {
-    
+        $args = $_POST["vendedor"];
+
+        $vendedor->sincronizar($args);
+
+        $errores = $vendedor->validar();
+
+        if (empty($errores)) {
+            $vendedor->guardar();
+        }
     }
     
     incluirTemplate("header");
