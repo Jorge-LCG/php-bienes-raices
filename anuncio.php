@@ -1,4 +1,7 @@
 <?php
+    require "includes/app.php";
+    use App\Propiedad;
+
     $id = $_GET["id"];
     $id = filter_var($id, FILTER_VALIDATE_INT);
 
@@ -6,51 +9,40 @@
         header("Location: /");
     }
 
-    require "includes/app.php";
-    $db = conectarBD();
-
-    $query = "SELECT * FROM propiedades WHERE id=$id";
-    $resultado = mysqli_query($db, $query);
-
-    if (!$resultado->num_rows) {
-        header("Location: /");
-    }
-
-    $propiedad = mysqli_fetch_assoc($resultado);
+    $propiedad = Propiedad::find($id);
 
     incluirTemplate("header"); 
 ?>
 
     <main class="contenedor seccion contenido-centrado">
-        <h1><?php echo $propiedad["titulo"]; ?></h1>
+        <h1><?php echo $propiedad->titulo; ?></h1>
 
-        <img src="imagenes/<?php echo $propiedad["imagen"]; ?>.jpg" alt="<?php echo $propiedad["titulo"] ?>">
+        <img src="imagenes/<?php echo $propiedad->imagen; ?>" alt="<?php echo $propiedad->titulo ?>">
 
         <div class="resumen-propiedad">
-            <p class="precio">S/ <?php echo $propiedad["precio"]; ?></p>
+            <p class="precio">S/ <?php echo $propiedad->precio; ?></p>
 
             <ul class="iconos-caracteristicas">
                 <li>
                     <img class="icono" src="build/img/svg/icono_wc.svg" alt="icono wc">
-                    <p><?php echo $propiedad["wc"]; ?></p>
+                    <p><?php echo $propiedad->wc; ?></p>
                 </li>
                 
                 <li>
                     <img class="icono" src="build/img/svg/icono_estacionamiento.svg" alt="icono estacionamiento">
-                    <p><?php echo $propiedad["estacionamiento"]; ?></p>
+                    <p><?php echo $propiedad->estacionamiento; ?></p>
                 </li>
                 
                 <li>
                     <img class="icono" src="build/img/svg/icono_dormitorio.svg" alt="icono dormitorio">
-                    <p><?php echo $propiedad["habitaciones"]; ?></p>
+                    <p><?php echo $propiedad->habitaciones; ?></p>
                 </li>
             </ul>
 
-            <p><?php echo $propiedad["descripcion"]; ?></p>
+            <p><?php echo $propiedad->descripcion; ?></p>
         </div>
     </main>
 
 <?php
-    mysqli_close($db);
     incluirTemplate("footer"); 
 ?>
