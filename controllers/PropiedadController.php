@@ -11,6 +11,7 @@ use Intervention\Image\ImageManager as Image;
 class PropiedadController {
     public static function index(Router $router) {
         $propiedades = Propiedad::all();
+        $vendedores = Vendedor::all();
         $resultado = $_GET["resultado"] ?? null;
 
         $router->render('propiedades/admin', [
