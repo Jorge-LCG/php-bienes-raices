@@ -72,7 +72,7 @@
                             <input type="hidden" id="tipo" name="tipo" value="vendedor">
                             <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
                         </form>
-                        <a href="admin/vendedores/actualizar.php?id=<?php echo $vendedor->id;?>" class="boton-amarillo-block">Actualizar</a>
+                        <a href="vendedores/actualizar?id=<?php echo $vendedor->id;?>" class="boton-amarillo-block">Actualizar</a>
                     </td>
                 </tr>
             <?php endforeach; ?>
