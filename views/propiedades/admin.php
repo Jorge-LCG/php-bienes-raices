@@ -67,7 +67,7 @@
                     <td><?php echo $vendedor->apellido; ?></td>
                     <td><?php echo $vendedor->telefono; ?></td>
                     <td class="acciones">
-                        <form method="POST">
+                        <form method="POST" action="/vendedores/eliminar">
                             <input type="hidden" id="id" name="id" value="<?php echo $vendedor->id; ?>">
                             <input type="hidden" id="tipo" name="tipo" value="vendedor">
                             <input type="submit" value="Eliminar" class="boton-rojo-block w-100">
