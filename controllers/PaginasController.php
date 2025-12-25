@@ -2,9 +2,18 @@
 
 namespace Controllers;
 
+use Model\Propiedad;
+use MVC\Router;
+
 class PaginasController {
-    public static function index() {
-        echo "index página principal";
+    public static function index(Router $router) {
+        $inicio = true;
+        $propiedades = Propiedad::get(3);
+
+        $router->render("paginas/index", [
+            "inicio" => $inicio,
+            "propiedades" => $propiedades
+        ]);
     }
 
     public static function nosotros() {
