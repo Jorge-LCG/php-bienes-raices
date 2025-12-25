@@ -10,33 +10,58 @@
 
     <h2>Llene el Formulaio de Contacto</h2>
 
-    <form class="formulario">
+    <form class="formulario" method="POST" action="/contacto">
         <fieldset>
             <label for="nombre">Nombre</label>
-            <input type="text" id="nombre" name="nombre" placeholder="Tu nombre">
+            <input 
+                type="text" 
+                id="nombre" 
+                name="contacto[nombre]" 
+                placeholder="Tu nombre"
+                required
+            >
             
             <label for="email">E-mail</label>
-            <input type="email" id="email" name="email" placeholder="Tu email">
+            <input 
+                type="email" 
+                id="email" 
+                name="contacto[email]" 
+                placeholder="Tu email"
+                required
+            >
             
             <label for="telefono">Teléfono</label>
-            <input type="tel" id="telefono" name="telefono" placeholder="Tu telefono">
+            <input 
+                type="tel" 
+                id="telefono" 
+                name="contacto[telefono]" 
+                placeholder="Tu telefono"
+            >
 
             <label for="mensaje">Mensaje</label>
-            <textarea name="mensaje" id="mensaje"></textarea>
+            <textarea 
+                required
+                name="contacto[mensaje]"></textarea>
         </fieldset>
 
         <fieldset>
             <legend>Información sobre la propiedad</legend>
 
             <label for="opciones">Vende o Compra</label>
-            <select name="opciones" id="opciones">
+            <select name="contacto[tipo]" id="opciones" required>
                 <option value="" disabled selected>--Seleccionar--</option>
                 <option value="Compra">Compra</option>
                 <option value="Vende">Vende</option>
             </select>
 
             <label for="presupuesto">Precio o Presupuesto</label>
-            <input type="number" placeholder="Tu precio o presupuesto" id="presupuesto" name="precupuesto">
+            <input 
+                type="number" 
+                placeholder="Tu precio o presupuesto" 
+                id="presupuesto" 
+                name="contacto[precio]" 
+                required
+            >
         </fieldset>
 
         <fieldset>
@@ -45,19 +70,41 @@
             <p>Como desea ser contactado:</p>
             <div class="forma-contacto">
                 <label for="contactar-telefono">Teléfono</label>
-                <input type="radio" value="telefono" id="contactar-telefono" name="contacto">
+                <input 
+                    type="radio" 
+                    value="telefono" 
+                    id="contactar-telefono" 
+                    name="contacto[contacto]" 
+                    required
+                >
 
                 <label for="contactar-email">E-mail</label>
-                <input type="radio" value="email" id="contactar-email" name="contacto">
+                <input 
+                    type="radio" 
+                    value="email" 
+                    id="contactar-email" 
+                    name="contacto[contacto]" 
+                    required
+                >
             </div>
 
             <p>Si eligió teléfono, elija la fecha y hora</p>
 
             <label for="fecha">Fecha</label>
-            <input type="date" id="fecha" name="fecha">
+            <input 
+                type="date" 
+                id="fecha" 
+                name="contacto[fecha]"
+            >
             
             <label for="hora">Hora</label>
-            <input type="time" id="hora" name="hora" min="09:00" max="18:00">
+            <input 
+                type="time" 
+                id="hora" 
+                min="09:00" 
+                max="18:00" 
+                name="contacto[hora]"
+            >
         </fieldset>
 
         <input type="submit" value="Enviar" class="boton-verde">
