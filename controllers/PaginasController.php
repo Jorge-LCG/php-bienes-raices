@@ -16,27 +16,27 @@ class PaginasController {
         ]);
     }
 
-    public static function nosotros() {
-        echo "nosotros página principal";
+    public static function nosotros(Router $router) {
+        $router->render("paginas/nosotros", []);
     }
 
-    public static function propiedades() {
-        echo "propiedades página principal";
+    public static function propiedades(Router $router) {
+        $router->render("", []);
     }
 
-    public static function propiedad() {
-        echo "propiedad página principal";
+    public static function propiedad(Router $router) {
+       $router->render("", []);
     }
 
-    public static function blog() {
-        echo "blog página principal";
+    public static function blog(Router $router) {
+        $router->render("", []);
     }
 
-    public static function entrada() {
-        echo "entrada página principal";
+    public static function entrada(Router $router) {
+        $router->render("", []);
     }
 
-    public static function contacto() {
-        echo "contacto página principal";
+    public static function contacto(Router $router) {
+        $router->render("", []);
     }
 }
