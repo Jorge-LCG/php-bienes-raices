@@ -64,7 +64,7 @@
             <legend>Contacto</legend>
 
             <p>Como desea ser contactado:</p>
-            <div class="forma-contacto" id="contacto">
+            <div class="forma-contacto">
                 <label for="contactar-telefono">Teléfono</label>
                 <input 
                     type="radio" 
@@ -82,23 +82,7 @@
                 >
             </div>
 
-            <p>Si eligió teléfono, elija la fecha y hora</p>
-
-            <label for="fecha">Fecha</label>
-            <input 
-                type="date" 
-                id="fecha" 
-                name="contacto[fecha]"
-            >
-            
-            <label for="hora">Hora</label>
-            <input 
-                type="time" 
-                id="hora" 
-                min="09:00" 
-                max="18:00" 
-                name="contacto[hora]"
-            >
+            <div id="contacto"></div>
         </fieldset>
 
         <input type="submit" value="Enviar" class="boton-verde">
