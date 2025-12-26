@@ -10,7 +10,7 @@
 
     <h2>Llene el Formulaio de Contacto</h2>
 
-    <form class="formulario" method="POST" action="/contacto">
+    <form class="formulario" method="POST">
         <fieldset>
             <label for="nombre">Nombre</label>
             <input 
@@ -18,7 +18,6 @@
                 id="nombre" 
                 name="contacto[nombre]" 
                 placeholder="Tu nombre"
-                required
             >
             
             <label for="email">E-mail</label>
@@ -27,7 +26,6 @@
                 id="email" 
                 name="contacto[email]" 
                 placeholder="Tu email"
-                required
             >
             
             <label for="telefono">Teléfono</label>
@@ -40,7 +38,6 @@
 
             <label for="mensaje">Mensaje</label>
             <textarea 
-                required
                 name="contacto[mensaje]"></textarea>
         </fieldset>
 
@@ -48,7 +45,7 @@
             <legend>Información sobre la propiedad</legend>
 
             <label for="opciones">Vende o Compra</label>
-            <select name="contacto[tipo]" id="opciones" required>
+            <select name="contacto[tipo]" id="opciones">
                 <option value="" disabled selected>--Seleccionar--</option>
                 <option value="Compra">Compra</option>
                 <option value="Vende">Vende</option>
@@ -59,8 +56,7 @@
                 type="number" 
                 placeholder="Tu precio o presupuesto" 
                 id="presupuesto" 
-                name="contacto[precio]" 
-                required
+                name="contacto[precio]"
             >
         </fieldset>
 
@@ -68,14 +64,13 @@
             <legend>Contacto</legend>
 
             <p>Como desea ser contactado:</p>
-            <div class="forma-contacto">
+            <div class="forma-contacto" id="contacto">
                 <label for="contactar-telefono">Teléfono</label>
                 <input 
                     type="radio" 
                     value="telefono" 
                     id="contactar-telefono" 
                     name="contacto[contacto]" 
-                    required
                 >
 
                 <label for="contactar-email">E-mail</label>
@@ -84,7 +79,6 @@
                     value="email" 
                     id="contactar-email" 
                     name="contacto[contacto]" 
-                    required
                 >
             </div>
 
