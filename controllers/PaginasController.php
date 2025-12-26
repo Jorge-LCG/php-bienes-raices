@@ -69,14 +69,21 @@ class PaginasController {
             $contenido = "<html> ";
             $contenido .= "<p>Tienes un nuevo mensaje.</p>" ;
             $contenido .= "<p>Nombres: " . $respuesta["nombre"] . " </p>" ;
-            $contenido .= "<p>Email: " . $respuesta["email"] . " </p>" ;
-            $contenido .= "<p>Teléfono: " . $respuesta["telefono"] . " </p>" ;
             $contenido .= "<p>Mensaje: " . $respuesta["mensaje"] . " </p>" ;
             $contenido .= "<p>Vende o Compra: " . $respuesta["tipo"] . " </p>" ;
             $contenido .= "<p>Precio o Presupuesto: " . $respuesta["precio"] . " </p>" ;
             $contenido .= "<p>Prefiere ser contactado por: " . $respuesta["contacto"] . " </p>" ;
-            $contenido .= "<p>Fecha contacto: " . $respuesta["fecha"] . " </p>" ;
-            $contenido .= "<p>Hora: " . $respuesta["hora"] . " </p>" ;
+
+            if ($respuesta["contacto"] === "telefono") {
+                $contenido .= "<p>Eligió ser contactado por teléfono: </p>" ;
+                $contenido .= "<p>Teléfono: " . $respuesta["telefono"] . " </p>" ;
+                $contenido .= "<p>Fecha contacto: " . $respuesta["fecha"] . " </p>" ;
+                $contenido .= "<p>Hora: " . $respuesta["hora"] . " </p>" ;
+            } else {
+                $contenido .= "<p>Eligió ser contactado por email: </p>" ;
+                $contenido .= "<p>Email: " . $respuesta["email"] . " </p>" ;
+            }
+
             $contenido .= "</html>";
             $mail->Body = $contenido;
             $mail->AltBody = "Este es un texto alternativo";

@@ -19,22 +19,6 @@
                 name="contacto[nombre]" 
                 placeholder="Tu nombre"
             >
-            
-            <label for="email">E-mail</label>
-            <input 
-                type="email" 
-                id="email" 
-                name="contacto[email]" 
-                placeholder="Tu email"
-            >
-            
-            <label for="telefono">Teléfono</label>
-            <input 
-                type="tel" 
-                id="telefono" 
-                name="contacto[telefono]" 
-                placeholder="Tu telefono"
-            >
 
             <label for="mensaje">Mensaje</label>
             <textarea 
