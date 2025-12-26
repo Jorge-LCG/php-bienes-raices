@@ -1,6 +1,12 @@
 <main class="contenedor seccion contenido-centrado">
     <h1>Contacto</h1>
 
+    <?php if (isset($mensaje)) : ?>
+        <p class="alerta exito" id="alerta"><?php echo $mensaje; ?></p>
+    <?php else: ?>
+            <p class="alerta error" id="alerta"><?php echo $mensaje; ?></p>
+    <?php endif; ?>
+
     <picture>
         <source srcset="build/img/jpg/destacada3.avif" type="imagen/avif">
         <source srcset="build/img/jpg/destacada3.webp" type="imagen/webp">

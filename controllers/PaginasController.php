@@ -47,6 +47,8 @@ class PaginasController {
     }
 
     public static function contacto(Router $router) {
+        $mensaje = "";
+
         if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $respuesta = $_POST["contacto"];
 
@@ -89,12 +91,14 @@ class PaginasController {
             $mail->AltBody = "Este es un texto alternativo";
 
             if ($mail->send()) {
-                echo "Se envio el correo";
+                $mensaje = "Se envio el correo correctamente";
             } else {
-                echo "No se envio el correo";
+                $mensaje = "No se pudo enviar el correo";
             }
         }
 
-        $router->render("paginas/contacto", []);
+        $router->render("paginas/contacto", [
+            "mensaje" => $mensaje
+        ]);
     }
 }
